@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import { BookRepository } from '../repositories/BookRepository.js';
+import { BookRepository } from '../domain/repositories/BookRepository.js';
 import { BookService } from '../services/BookService.js';
 import { BookController } from '../controllers/BookController.js';
 

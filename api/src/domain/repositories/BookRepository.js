@@ -1,5 +1,5 @@
-import { pool } from "../../config/db";
-import { Book } from "../entities/Book";
+import { pool } from "../../config/db.js";
+import { Book } from "../entities/Book.js";
 
 export class BookRepository {
     async create ({title, author, year, price}){
@@ -27,8 +27,6 @@ export class BookRepository {
 
         return rows.map(r => new Book(r));
     }
-
-    
 
     async findById(id){
         const sql = `SELECT id, title, author, year, price, created_at, updated_at

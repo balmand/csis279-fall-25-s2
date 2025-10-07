@@ -14,7 +14,7 @@ export class BookController{
 
     list = async (req, res, next) =>{
         try{
-            res.json(await this.bookService.getAllBooks());
+            res.json(await this.bookService.listBooks());
         }catch(e){
             next(e);
         }

@@ -83,7 +83,7 @@ export function BooksPage() {
     return (
         <div className="books-page">
             <div className="page-header">
-                <h1>Book Management System</h1>
+                <h1>Book Management</h1>
                 <button 
                     className="btn btn-primary"
                     onClick={() => setShowForm(true)}
@@ -143,7 +143,7 @@ export function BooksPage() {
 
                 {!loading && books.length > 0 && (
                     <div className="books-grid">
-                        {books.map((book) => (
+                        {books.map(book => (
                             <BookCard
                                 key={book.id}
                                 book={book}

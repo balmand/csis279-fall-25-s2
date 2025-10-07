@@ -1,5 +1,5 @@
-export class BookDTO {
-    constructor({id = null, title, author, year, price}){
+export default class BookDTO {
+    constructor({id, title, author, year, price}){
         this.id = id;
         this.title = title;
         this.author = author;
@@ -7,7 +7,6 @@ export class BookDTO {
         this.price = price;
     }
 
-    // mapper to convert entity to DTO.
     static fromEntity(entity){
         return new BookDTO(entity);
     }

@@ -6,6 +6,8 @@
 
 import React from 'react';
 import BooksPage from './pages/BooksPage';
+import CustomersPage from './pages/CustomersPage';
+
 import './App.css';
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
       
       <main className="App-main">
         <BooksPage />
+        <CustomersPage />
       </main>
       
       <footer className="App-footer">
