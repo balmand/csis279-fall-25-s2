@@ -25,14 +25,6 @@ function App() {
   const readUser = () => {
     console.log(localStorage.getItem("user"));
   }
-
-  const login = (user) =>{
-    localStorage.setItem("user", JSON.stringify(user));
-  } 
-
-  const readUser = () => {
-    console.log(localStorage.getItem("user"));
-  }
   return (
     <div className="App">
       <header className="App-header">
