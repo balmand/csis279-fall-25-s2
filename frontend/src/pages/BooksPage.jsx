@@ -61,7 +61,7 @@ export function BooksPage() {
     const handleSearch = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        
+
         if (query.trim()) {
             searchBooks(query);
         } else {
@@ -84,7 +84,7 @@ export function BooksPage() {
         <div className="books-page">
             <div className="page-header">
                 <h1>Book Management</h1>
-                <button 
+                <button
                     className="btn btn-primary"
                     onClick={() => setShowForm(true)}
                 >
@@ -95,7 +95,7 @@ export function BooksPage() {
             {error && (
                 <div className="alert alert-danger">
                     <p>{error}</p>
-                    <button 
+                    <button
                         className="btn btn-sm btn-outline-danger"
                         onClick={clearError}
                     >
@@ -128,7 +128,7 @@ export function BooksPage() {
 
             <div className="books-section">
                 <h2>Books ({books.length})</h2>
-                
+
                 {loading && (
                     <div className="loading">
                         <p>Loading books...</p>
@@ -163,8 +163,10 @@ export function BooksPage() {
                     </div>
                     <div className="stat">
                         <strong>Average Price:</strong> {
-                            books.length > 0 
-                                ? formatCurrency(books.reduce((sum, book) => sum + book.price, 0) / books.length)
+                            books.length > 0
+                                ? formatCurrency(
+                                    books.reduce((sum, book) => sum + Number(book.price), 0) / books.length
+                                )
                                 : '$0.00'
                         }
                     </div>
