@@ -1,79 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-export default function CustomerForm({ onSave, editCustomer, onCancel, loading = false }) {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", address: "" });
-  const [errors, setErrors] = useState({});
+export function CustomerForm({ customer, onSubmit, onCancel, loading }) {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: ''
+  });
 
   useEffect(() => {
-    if (editCustomer) setForm(editCustomer);
-    else setForm({ name: "", email: "", phone: "", address: "" });
-  }, [editCustomer]);
+    if (customer) setForm(customer);
+  }, [customer]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!form.name.trim()) newErrors.name = "Name is required";
-    if (!form.email.trim()) newErrors.email = "Email is required";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-    onSave(form, editCustomer?.id);
+    onSubmit(form);
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
-      <input
-        name="name"
-        placeholder="Name"
-        value={form.name}
-        onChange={handleChange}
-        disabled={loading}
-      />
-      {errors.name && <span style={{ color: "red" }}>{errors.name}</span>}
+    <form onSubmit={handleSubmit} className="book-form">
+      <div className="form-group">
+        <label>Name *</label>
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
 
-      <input
-        name="email"
-        placeholder="Email"
-        value={form.email}
-        onChange={handleChange}
-        disabled={loading}
-      />
-      {errors.email && <span style={{ color: "red" }}>{errors.email}</span>}
+      <div className="form-group">
+        <label>Email *</label>
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
 
-      <input
-        name="phone"
-        placeholder="Phone"
-        value={form.phone}
-        onChange={handleChange}
-        disabled={loading}
-      />
+      <div className="form-group">
+        <label>Phone *</label>
+        <input
+          type="text"
+          name="phone"
+          value={form.phone}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
 
-      <input
-        name="address"
-        placeholder="Address"
-        value={form.address}
-        onChange={handleChange}
-        disabled={loading}
-      />
+      <div className="form-group">
+        <label>Address *</label>
+        <input
+          type="text"
+          name="address"
+          value={form.address}
+          onChange={handleChange}
+          required
+          className="form-control"
+        />
+      </div>
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Saving..." : editCustomer ? "Update Customer" : "Add Customer"}
-      </button>
-
-      {editCustomer && (
-        <button type="button" onClick={onCancel} disabled={loading}>
+      <div className="form-actions">
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {customer ? 'Update Customer' : 'Add Customer'}
+        </button>
+        <button type="button" className="btn btn-secondary" onClick={onCancel}>
           Cancel
         </button>
-      )}
+      </div>
     </form>
   );
 }
