@@ -13,6 +13,7 @@ import { useBooks } from '../hooks/useBooks';
 import { BookCard } from '../components/BookCard';
 import { BookForm } from '../components/BookForm';
 import { formatCurrency } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
 export function BooksPage() {
     const {
@@ -183,6 +184,7 @@ export function BooksPage() {
 
                 </div>
             </div>
+            <Link to="/">Home</Link>
         </div>
     );
 }
