@@ -7,7 +7,7 @@
 import React from 'react';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
-
+import Menu from './components/Menu';
 import './App.css';
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
       </header>
       
       <main className="App-main">
+        <Menu/>
         <BooksPage />
         <CustomersPage />
       </main>
