@@ -1,32 +1,23 @@
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import BooksPage from '../pages/BooksPage';
-import CustomersPage from "../pages/CustomersPage";
+import Books from '../pages/BooksPage';
+import Customers from "../pages/CustomersPage";
 
-function Home(){
-    return ;
-}
-function Books(){
-    return <BooksPage/>;
-}
 
-function Customers(){
-    return <CustomersPage/>;
-}
 
 export default function App() {
   return (
     <>
-      <nav style={{ padding: "10px", background: "#eee" }}>
-        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-        <Link to="/books" style={{ marginRight: "10px" }}>Books</Link>
+      <div>
+         <Link className to="/">Home</Link>
         <Link to="/customers">Customers</Link>
-      </nav>
+          <Link to="/books">Books</Link>
+              </div>
+              <Link className='btn-primary' to="/">Home</Link> |
+              <Link className='btn-primary' to="/books">Books</Link> |
+              <Link className='btn-primary' to="/customers">Customers</Link> |
+              <Link className='btn-primary' to="/aboutus">About us</Link>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/customers" element={<Customers/>} />
-      </Routes>
-      </>    
+     
+  </>
   );
 }
