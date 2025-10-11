@@ -7,8 +7,8 @@
 import React from 'react';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
-// import AboutUsPage from './pages/AboutUsPage.jsx'
-import { } from 'react-router-dom';
+import AboutUs from './pages/AboutUs';
+import {Router} from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -16,7 +16,6 @@ import Menu from './components/Menu';
 
 
 import './App.css';
-import AboutUs from './pages/AboutUs';
 
 function App() {
   const login = (user) => {
@@ -48,8 +47,8 @@ function App() {
 
       <footer className="App-footer">
         <p>Simple Book Management App - Educational Project</p>
-        <button onClick={()=>login({id: 1, name: "test"})}>Login</button>
-        <button onClick={()=>readUser()}>Read storage</button>
+        <button onClick={() => login({ id: 1, name: "test" })}>Login</button>
+        <button onClick={() => readUser()}>Read storage</button>
       </footer>
     </div>
   );
