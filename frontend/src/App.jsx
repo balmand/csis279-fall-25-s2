@@ -27,14 +27,14 @@ function App() {
       <header className="App-header">
         <h1>Management System</h1>
         <p>Learn Modularity, Clean Code & Reusability</p>
-        {registeredUser && <LogoutButton />}
+        {/* {registeredUser && <LogoutButton />} */}
         <Menu />
       </header>
 
       <main className="App-main">
         <Routes>
-          <Route element={<PrivateRoute />}>
-            <Route path="/" element={<DashboardHome />} />
+          <Route>
+            <Route path="/"/>
             <Route path="/books" element={<BooksPage />} />
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/aboutus" element={<AboutUs />} />
