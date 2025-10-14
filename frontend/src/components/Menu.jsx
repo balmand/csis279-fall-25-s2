@@ -16,6 +16,7 @@ export default function App() {
               <Link className='btn-primary' to="/books">Books</Link> |
               <Link className='btn-primary' to="/customers">Customers</Link> |
               <Link className='btn-primary' to="/aboutus">About us</Link>
+              <Link className='btn-primary' to="/contact">Contact us</Link>
 
      
   </>

@@ -5,6 +5,8 @@ import CustomersPage from "./pages/CustomersPage";
 import AboutUs from "./pages/AboutUs";
 import Menu from "./components/Menu";
 import { Routes, Route } from "react-router-dom";
+import ContactUs from "./pages/ContactUs";
+
 import "./App.css";
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
             <Route path="/books" element={<BooksPage />} />
             <Route path="/customers" element={<CustomersPage />} />
             <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+
           </Routes>
         )}
       </main>
