@@ -1,5 +1,11 @@
 export function errorHandler(err, req, res, next){
     console.error('Error:', err);
+
+    if (err.statusCode) {
+        return res.status(err.statusCode).json({
+            message: err.message
+        });
+    }
     
     // Handle validation errors
     if (err.name === 'ValidationError') {

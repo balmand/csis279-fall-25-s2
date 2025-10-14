@@ -1,23 +1,27 @@
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import Books from '../pages/BooksPage';
-import Customers from "../pages/CustomersPage";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 
+export default function Menu() {
+  const { isAuthenticated, logout } = useAuth();
 
-
-export default function App() {
   return (
-    <>
-      <div>
-         <Link className to="/">Home</Link>
-        <Link to="/customers">Customers</Link>
+    <nav className="menu">
+      <Link to="/">Home</Link>
+      {isAuthenticated ? (
+        <>
           <Link to="/books">Books</Link>
-              </div>
-              <Link className='btn-primary' to="/">Home</Link> |
-              <Link className='btn-primary' to="/books">Books</Link> |
-              <Link className='btn-primary' to="/customers">Customers</Link> |
-              <Link className='btn-primary' to="/aboutus">About us</Link>
-
-     
-  </>
+          <Link to="/customers">Customers</Link>
+          <Link to="/aboutus">About us</Link>
+          <button type="button" onClick={logout}>
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
+    </nav>
   );
 }

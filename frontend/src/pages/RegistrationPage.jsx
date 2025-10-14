@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RegistrationForm from "../components/RegistrationForm";
 import RegistrationCard from "../components/RegistrationCard";
 import RegistrationTable from "../components/RegistrationTable";
 import RegistrationList from "../components/RegistrationList";
 import useRegistration from "../hooks/useRegistration";
+import { useAuth } from "../context/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
-export default function RegistrationPage({ onRegister }) {
+export default function RegistrationPage() {
   const { register, loading, error } = useRegistration();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
   const [registrations, setRegistrations] = useState([]);
 
@@ -15,15 +19,24 @@ export default function RegistrationPage({ onRegister }) {
       const user = await register(formData);
       setRegistrations((prev) => [...prev, user]);
       setSuccess(true);
-      onRegister(user);
+
+      setTimeout(() => {
+        navigate("/", { replace: true });
+      }, 1200);
     } catch (err) {
-      console.error("❌ Registration failed:", err);
+      console.error("Registration failed:", err);
     }
   };
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <div className="registration-page">
-      <h2>📝 Registration</h2>
+      <h2>Registration</h2>
 
       {!success && (
         <div className="form-section">
@@ -34,7 +47,7 @@ export default function RegistrationPage({ onRegister }) {
 
       {success && (
         <div className="success-message">
-          <h3>Registration successful 🎉</h3>
+          <h3>Registration successful</h3>
           <p>Redirecting to your dashboard...</p>
         </div>
       )}

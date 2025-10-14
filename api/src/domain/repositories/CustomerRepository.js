@@ -12,7 +12,7 @@ export class CustomerRepository {
         return rows.map(r => new Customer(r));
     }
 
-    async findBy(id) {
+    async findById(id) {
         const sql = `
             SELECT id, name, email, phone, address
             FROM customers
