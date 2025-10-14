@@ -6,6 +6,7 @@ import AboutUs from "./pages/AboutUs";
 import Menu from "./components/Menu";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import LogoutButton from "./components/LogoutButton";
 
 function App() {
   const [registeredUser, setRegisteredUser] = useState(
@@ -26,6 +27,7 @@ function App() {
       <header className="App-header">
         <h1>📚 Management System</h1>
         <p>Learn Modularity, Clean Code & Reusability</p>
+        {registeredUser && <LogoutButton />}
         <Menu />
       </header>
 

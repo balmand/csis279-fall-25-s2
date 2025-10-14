@@ -6,6 +6,7 @@ import { bookRoutes } from './routes/bookRoutes.js';
 import { customerRoutes } from './routes/customerRoutes.js';
 import { passwordRoutes } from './routes/passwordRoutes.js';
 import { userRoutes } from './routes/userRoutes.js'; //Added user routes
+import { logoutRoutes } from './routes/logoutRoutes.js'; // Added logout routes
 
 import { healthCheck } from './config/db.js';
 import { errorHandler } from './middlewares/errorHandler.js';
@@ -32,6 +33,7 @@ app.use('/api/books', bookRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/password', passwordRoutes);
 app.use('/api/users', userRoutes); //Added /api/users endpoint
+app.use('/api/logout', logoutRoutes); 
 
 // Global error handler
 app.use(errorHandler);
