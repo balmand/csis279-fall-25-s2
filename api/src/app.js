@@ -9,6 +9,7 @@ import { authRoutes } from './routes/authRoutes.js';
 import { healthCheck } from './config/db.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { authenticate } from './middlewares/authenticate.js';
+import { userRoutes } from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -30,8 +31,7 @@ app.get('/health', async (req, res) => {
 app.use('/api/books', authenticate, bookRoutes);
 app.use('/api/customers', authenticate, customerRoutes);
 app.use('/api/password', passwordRoutes);
-app.use('/api/users', userRoutes); //Added /api/users endpoint
-app.use('/api/logout', logoutRoutes); 
+app.use('/api/users', authRoutes); //Added /api/users endpoint
 
 // Global error handler
 app.use(errorHandler);
