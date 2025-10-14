@@ -8,6 +8,7 @@ import React from 'react';
 import BooksPage from './pages/BooksPage';
 import CustomersPage from './pages/CustomersPage';
 import AboutUs from './pages/AboutUs'
+import HomePage from './pages/HomePage';
 import { Router } from 'react-router-dom';
 import { Link, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -25,11 +26,6 @@ function App() {
       <header className="App-header">
         <h1>📚 Book Management System</h1>
         <p>Learn Modularity, Clean Code & Reusability</p>
-        <div>
-          <Link className to="/">Home</Link>
-          <Link to="/customers">Customers</Link>
-          <Link to="/books">Books</Link>
-        </div>
         <Link className='btn-primary' to="/">Home</Link> |
         <Link className='btn-primary' to="/books">Books</Link> |
         <Link className='btn-primary' to="/customers">Customers</Link> |
@@ -39,7 +35,7 @@ function App() {
 
       <main className="App-main">
         <Routes>
-          <Route path="/" element={<><BooksPage /><CustomersPage /></>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/books" element={<BooksPage />} />
           <Route path="/customers" element={<CustomersPage />} />
           <Route path="/aboutus" element={<AboutUs />} />
