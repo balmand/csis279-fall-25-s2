@@ -8,7 +8,7 @@ import Menu from "./components/Menu.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import "./App.css";
 import LogoutButton from "./components/LogoutButton";
-
+import { useAuth } from "./context/AuthContext.jsx";
 function App() {
   const { initializing, isAuthenticated } = useAuth();
 
