@@ -336,4 +336,168 @@
   .book-actions {
     justify-content: center;
   }
+  /* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+.App-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #4a90e2;
+  color: white;
+}
+
+.App-main {
+  padding: 20px;
+}
+
+.App-footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #eee;
+}
+
+/* ---------------- Registration Page ---------------- */
+.registration-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* horizontal center */
+  justify-content: flex-start;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+/* Form Card */
+.form-section {
+  width: 100%;
+  max-width: 400px;
+  padding: 25px;
+  margin: 15px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Form Inputs */
+.registration-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.registration-form label {
+  font-weight: bold;
+}
+
+.registration-form .error {
+  color: red;
+  font-size: 0.9em;
+}
+
+/* Buttons */
+.registration-form button,
+.registration-card button {
+  padding: 8px 12px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.registration-form button {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.registration-card button.btn-secondary {
+  background-color: #aaa;
+  color: white;
+}
+
+.registration-card button.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.registration-card button.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Cards Section */
+.cards-section,
+.table-section,
+.list-section {
+  width: 100%;
+  max-width: 500px;
+  margin: 15px 0;
+}
+
+/* Card Style */
+.registration-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.registration-card .registration-info h3 {
+  margin: 0;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #f7f7f7;
+}
+
+/* List */
+.registration-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+.registration-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* full height */
+  background-color: #f9f9f9;
+}
+
+.registration-card-wrapper {
+  width: 400px;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.registration-list li {
+  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 }

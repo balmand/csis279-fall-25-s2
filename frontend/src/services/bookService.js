@@ -9,6 +9,7 @@
 
 //const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
 const API_BASE_URL = 'http://localhost:4000/api';
+const getAuthToken = () => localStorage.getItem('authToken');
 
 class BookService {
     /**
@@ -18,12 +19,20 @@ class BookService {
      * @returns {Promise} Response data
      */
     async request(url, options = {}) {
+        const token = getAuthToken();
+
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(options.headers ?? {})
+        };
+
+        if (token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
+
         const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                ...options.headers
-            },
-            ...options
+            ...options,
+            headers
         };
 
         try {
@@ -34,6 +43,10 @@ class BookService {
                 throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
             }
             
+            if (response.status === 204) {
+                return null;
+            }
+
             return await response.json();
         } catch (error) {
             if (error.name === 'TypeError' && error.message.includes('fetch')) {

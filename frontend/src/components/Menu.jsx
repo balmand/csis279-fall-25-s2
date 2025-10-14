@@ -1,32 +1,27 @@
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
-import BooksPage from '../pages/BooksPage';
-import CustomersPage from "../pages/CustomersPage";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 
-function Home(){
-    return ;
-}
-function Books(){
-    return <BooksPage/>;
-}
+export default function Menu() {
+  const { isAuthenticated, logout } = useAuth();
 
-function Customers(){
-    return <CustomersPage/>;
-}
-
-export default function App() {
   return (
-    <>
-      <nav style={{ padding: "10px", background: "#eee" }}>
-        <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
-        <Link to="/books" style={{ marginRight: "10px" }}>Books</Link>
-        <Link to="/customers">Customers</Link>
-      </nav>
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/customers" element={<Customers/>} />
-      </Routes>
-      </>    
+    <nav className="menu">
+      <Link to="/">Home</Link>
+      {isAuthenticated ? (
+        <>
+          <Link to="/books">Books</Link>
+          <Link to="/customers">Customers</Link>
+          <Link to="/aboutus">About us</Link>
+          <button type="button" onClick={logout}>
+            Logout
+          </button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </>
+      )}
+    </nav>
   );
 }

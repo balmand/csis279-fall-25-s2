@@ -1,5 +1,6 @@
 // const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
 const API_BASE_URL = 'http://localhost:4000/api';
+const getAuthToken = () => localStorage.getItem('authToken');
 
 class CustomerService {
     /**
@@ -9,12 +10,20 @@ class CustomerService {
      * @returns {Promise} Response data
      */
     async request(url, options = {}) {
+        const token = getAuthToken();
+
+        const headers = {
+            'Content-Type': 'application/json',
+            ...(options.headers ?? {})
+        };
+
+        if (token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
+
         const config = {
-            headers: {
-                'Content-Type': 'application/json',
-                ...options.headers
-            },
-            ...options
+            ...options,
+            headers
         };
 
         try {
@@ -68,6 +77,11 @@ class CustomerService {
         return this.request(`/customers/${id}`, {
             method: 'DELETE'
         });
+    }
+
+    /** Search customers */
+    async search(query) {
+        return this.request(`/customers/search?q=${encodeURIComponent(query)}`);
     }
 }
 
