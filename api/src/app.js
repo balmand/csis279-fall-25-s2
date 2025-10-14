@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+
 import { bookRoutes } from './routes/bookRoutes.js';
 import { customerRoutes } from './routes/customerRoutes.js';
 import { passwordRoutes } from './routes/passwordRoutes.js';
@@ -13,6 +14,7 @@ dotenv.config();
 
 export const app = express();
 
+// Middleware
 app.use(express.json());
 app.use(cors());
 
@@ -28,4 +30,8 @@ app.get('/health', async (req, res) => {
 app.use('/api/books', authenticate, bookRoutes);
 app.use('/api/customers', authenticate, customerRoutes);
 app.use('/api/password', passwordRoutes);
+app.use('/api/users', userRoutes); //Added /api/users endpoint
+app.use('/api/logout', logoutRoutes); 
+
+// Global error handler
 app.use(errorHandler);

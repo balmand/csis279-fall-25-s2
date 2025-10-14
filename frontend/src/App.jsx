@@ -7,21 +7,7 @@ import AboutUs from "./pages/AboutUs.jsx";
 import Menu from "./components/Menu.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import "./App.css";
-import { useAuth } from "./context/AuthContext.jsx";
-
-function PrivateRoute() {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
-}
-
-function DashboardHome() {
-  return (
-    <>
-      <BooksPage />
-      <CustomersPage />
-    </>
-  );
-}
+import LogoutButton from "./components/LogoutButton";
 
 function App() {
   const { initializing, isAuthenticated } = useAuth();
@@ -41,6 +27,7 @@ function App() {
       <header className="App-header">
         <h1>Management System</h1>
         <p>Learn Modularity, Clean Code & Reusability</p>
+        {registeredUser && <LogoutButton />}
         <Menu />
       </header>
 
