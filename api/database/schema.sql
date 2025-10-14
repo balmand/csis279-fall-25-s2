@@ -53,7 +53,6 @@ ON CONFLICT DO NOTHING;
       CONSTRAINT customers_email_key UNIQUE (email) )
       
      TABLESPACE pg_default;
-     
      ALTER TABLE IF EXISTS public.customers
          OWNER to postgres;
          
