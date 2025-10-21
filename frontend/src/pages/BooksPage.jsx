@@ -40,6 +40,10 @@ export function BooksPage() {
         }
     };
 
+    const readTest = () =>{
+        console.log(localStorage.getItem("cart"));
+    }
+
     const handleUpdateBook = async (bookData) => {
         try {
             await updateBook(editingBook.id, bookData);
@@ -186,6 +190,7 @@ export function BooksPage() {
 
                 </div>
             </div>
+            <button onClick={()=>readTest()}>Test</button>
             <Link to="/">Home</Link>
         </div>
     );

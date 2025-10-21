@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs";
 
 import "./App.css";
+import CheckoutPage from "./pages/CheckoutPage";
 
 function App() {
   const [registeredUser, setRegisteredUser] = useState(
@@ -32,7 +33,16 @@ function App() {
       </header>
 
       <main className="App-main">
-        {!registeredUser ? (
+        <Routes>
+            <Route path="/" element={<><BooksPage /><CustomersPage /></>} />
+            <Route path="/books" element={<BooksPage />} />
+            <Route path="/customers" element={<CustomersPage />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+
+          </Routes>
+        {/* {!registeredUser ? (
           <RegistrationPage onRegister={handleRegister} />
         ) : (
           <Routes>
@@ -43,7 +53,7 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
 
           </Routes>
-        )}
+        )} */}
       </main>
 
       <footer className="App-footer">
